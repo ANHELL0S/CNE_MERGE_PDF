@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://cne-merge-pdf.ec/sitemap-index.xml
+Host: https://cne-merge-pdf.ec
