@@ -3,17 +3,20 @@ FROM oven/bun:latest AS builder
 
 WORKDIR /app
 
-# Copiar dependencias
-COPY package.json bun.lock ./
+# Limpiar caché de Bun primero
+RUN bun cache clean
 
-# Instalar dependencias con Bun
-RUN bun install --frozen-lockfile
+# Copiar solo package.json
+COPY package.json ./
+
+# Instalar con flag para limpiar caché
+RUN bun install --force
 
 # Copiar código fuente
 COPY . .
 
-# Construir la aplicación
-RUN bun run build
+# Limpiar caché de Gatsby y construir
+RUN rm -rf .cache public && bun run build
 
 # Production stage
 FROM nginx:alpine
