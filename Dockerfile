@@ -1,22 +1,19 @@
 # Build stage
-FROM oven/bun:latest AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Limpiar caché de Bun primero
-RUN bun cache clean
-
-# Copiar solo package.json
+# Copiar dependencias
 COPY package.json ./
 
-# Instalar con flag para limpiar caché
-RUN bun install --force
+# Instalar dependencias con npm
+RUN npm install
 
 # Copiar código fuente
 COPY . .
 
-# Limpiar caché de Gatsby y construir
-RUN rm -rf .cache public && bun run build
+# Construir la aplicación
+RUN npm run build
 
 # Production stage
 FROM nginx:alpine
