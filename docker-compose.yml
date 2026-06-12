@@ -1,0 +1,7 @@
+services:
+  cne_mergist:
+    build: .
+    container_name: cne_mergist
+    ports:
+      - "8080:80"
+    restart: unless-stopped

@@ -1,0 +1,51 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.4.15/schema.json",
+	"files": {
+		"includes": [
+			"**",
+			"!**/node_modules/**/*",
+			"!**/public/**/*",
+			"!**/plugins/**/*",
+			"!**/.cache/**/*",
+			"!**/.*",
+			"!**/gatsby-types.d.ts"
+		]
+	},
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"formatter": {
+		"indentStyle": "tab"
+	},
+	"linter": {
+		"rules": {
+			"correctness": {
+				"noUnusedImports": {
+					"level": "warn",
+					"fix": "none"
+				},
+				"noNodejsModules": "off"
+			},
+			"style": {
+				"noImplicitBoolean": "off"
+			},
+			"suspicious": {
+				"noReactSpecificProps": "off",
+				"noConsole": "off"
+			}
+		}
+	},
+	"css": {
+		"formatter": {
+			"quoteStyle": "single"
+		},
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"javascript": {
+		"jsxRuntime": "transparent",
+		"formatter": {
+			"quoteStyle": "single"
+		},
+		"globals": ["Queries", "React"]
+	}
+}
