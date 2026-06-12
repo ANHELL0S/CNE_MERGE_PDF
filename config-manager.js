@@ -10,16 +10,18 @@ const REGEX_IMAGE = /\.(jpg|jpeg|png|webp|gif|avif|tif|tiff)$/i;
 const config = {
 	metadata: {
 		shortTitle: "CNE MERGE PDF",
-		title: "CNE MERGE PDF - Online PDF Merger",
+		title: "CNE MERGE PDF - Fusión de Documentos Electorales",
 		author: "Angelo García",
 		authorUsername: "ANHELL0S",
-		shortDescription: "",
-		description: "",
+		shortDescription: "Fusiona documentos PDF del CNE de forma segura y local",
+		description:
+			"Herramienta oficial para combinar múltiples documentos PDF relacionados con procesos electorales del Consejo Nacional Electoral. Sin límites de tamaño, sin subidas a servidores, 100% privado y seguro.",
 		ogImageUrl: "images/og-image.png",
-		ogImageAltText: "CNE MERGE PDF logo",
-		siteUrl: "",
-		githubUrl: "",
-		homepageDomain: "",
+		ogImageAltText:
+			"CNE MERGE PDF - Herramienta de fusión de documentos electorales",
+		siteUrl: "https://cne-merge-pdf.ec",
+		githubUrl: "https://github.com/ANHELL0S/CNE_MERGE_PDF",
+		homepageDomain: "cne-merge-pdf.ec",
 	},
 	theme: {
 		light: {
