@@ -1,11 +1,17 @@
+[nixpacks]
+plan = "bun"
+
 [phases.setup]
-nixPkgs = ["nodejs_20"]
+nixPkgs = ["bun"]
 
 [phases.install]
-cmds = ["yarn install"]
+cmd = "bun install"
 
 [phases.build]
-cmds = ["yarn build"]
+cmd = "bun run build"
 
 [phases.start]
-cmds = ["yarn serve --port 3010 --host 0.0.0.0"]
+cmd = "bun run serve"
+
+[phases.start.cache]
+paths = ["node_modules", ".cache", "public"]

@@ -32,7 +32,7 @@
 	},
 	"scripts": {
 		"develop": "gatsby develop -H 0.0.0.0",
-		"start": "gatsby develop -H 0.0.0.0",
+		"start": "gatsby serve -H 0.0.0.0 -p 8000",
 		"build": "gatsby build",
 		"serve": "gatsby serve -H 0.0.0.0",
 		"clean": "gatsby clean",
