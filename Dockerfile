@@ -1,35 +1,35 @@
-# Build stage
-FROM oven/bun:latest AS builder
+# --- Etapa 1: Builder ---
+# Usamos una imagen de Node para construir la aplicación
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
-COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+# Copiamos los archivos de dependencias y las instalamos
+# Usamos yarn porque el proyecto original tiene yarn.lock [citation:1]
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-# Copy source and build
+# Copiamos todo el código fuente y lo construimos
 COPY . .
-RUN bun run build
+RUN yarn build
 
-# Production stage
+# --- Etapa 2: Servidor ---
+# Usamos una imagen ligera de Nginx para servir la aplicación
 FROM nginx:alpine
 
-# Copy built assets from builder stage
+# Este es el punto crucial. ¡Copiamos los archivos desde la carpeta 'public' del builder!
 COPY --from=builder /app/public /usr/share/nginx/html
 
-# Optional: Custom nginx config for better caching
+# Configuramos Nginx para manejar correctamente las rutas de una SPA
 RUN echo 'server { \
     listen 80; \
     server_name localhost; \
+    root /usr/share/nginx/html; \
+    index index.html; \
     location / { \
-        root /usr/share/nginx/html; \
-        index index.html; \
         try_files $uri $uri/ /index.html; \
-    } \
-    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg)$ { \
-        expires 1y; \
-        add_header Cache-Control "public, immutable"; \
     } \
 }' > /etc/nginx/conf.d/default.conf
 
+# Puerto que Nginx usará internamente
 EXPOSE 80
