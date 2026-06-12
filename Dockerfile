@@ -1,32 +1,30 @@
 # Usar Bun oficial
-FROM oven/bun:latest AS builder
+FROM oven/bun:1.2.0 AS builder
 
 WORKDIR /app
+
+# Forzar que este build no use caché (solo para esta imagen)
+RUN --no-cache=true rm -rf .cache node_modules
 
 # Copiar archivos de dependencias
 COPY package.json bun.lock ./
-RUN bun install
+RUN --no-cache=true bun install --frozen-lockfile
 
-# Copiar el resto del código y construir
+# Copiar el resto del código
 COPY . .
-RUN bun run build
 
-# Etapa de producción con Bun
-FROM oven/bun:latest
+# Limpiar caché de Gatsby y construir
+RUN --no-cache=true rm -rf .cache public
+RUN --no-cache=true bun run build
+
+# Etapa de producción
+FROM oven/bun:1.2.0
 
 WORKDIR /app
-
-# Copiar los archivos construidos y dependencias
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 
-# Variables de entorno
-ENV PORT=3010
-ENV HOST=0.0.0.0
-
-# Exponer el puerto 3010
+ENV PORT=3010 HOST=0.0.0.0
 EXPOSE 3010
-
-# Iniciar la aplicación en modo producción
 CMD ["bun", "run", "serve", "--port", "3010", "--host", "0.0.0.0"]
