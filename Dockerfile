@@ -5,13 +5,13 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 # Copiamos los archivos de dependencias y las instalamos
-# Usamos yarn porque el proyecto original tiene yarn.lock [citation:1]
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+# Usamos bun porque el proyecto original tiene bun.lock [citation:1]
+COPY package.json bun.lock ./
+RUN bun install --frozen-lockfile
 
 # Copiamos todo el código fuente y lo construimos
 COPY . .
-RUN yarn build
+RUN bun build
 
 # --- Etapa 2: Servidor ---
 # Usamos una imagen ligera de Nginx para servir la aplicación
