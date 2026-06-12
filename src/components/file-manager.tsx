@@ -3,14 +3,14 @@ import {
 	faGripVertical,
 	faTrash,
 	faXmark,
-} from '@fortawesome/free-solid-svg-icons';
-import { AnimatePresence, Reorder } from 'framer-motion';
-import prettyBytes from 'pretty-bytes';
-import { getDefaultTransition, ignoreDefault } from '../common/utilities.ts';
-import type { PdfFileMapInterface } from '../common/types.ts';
-import { PrimaryButton } from './buttons/primary.tsx';
-import { IconButton } from './buttons/icon.tsx';
-import { DropzoneWrapper } from './dropzones/wrapper.tsx';
+} from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence, Reorder } from "framer-motion";
+import prettyBytes from "pretty-bytes";
+import { getDefaultTransition, ignoreDefault } from "../common/utilities.ts";
+import type { PdfFileMapInterface } from "../common/types.ts";
+import { PrimaryButton } from "./buttons/primary.tsx";
+import { IconButton } from "./buttons/icon.tsx";
+import { DropzoneWrapper } from "./dropzones/wrapper.tsx";
 
 // A reorderable list item
 function SortableItem(props: {
@@ -20,7 +20,7 @@ function SortableItem(props: {
 	onRemove: (fileId: string) => void;
 	disabled: boolean;
 }) {
-	const classNames = `bg-base-100 shadow-md flex-row justify-between p-2 gap-4 rounded-lg cursor-pointer overflow-hidden hover:bg-base-200 ${(props.disabled && 'opacity-40') || ''}`;
+	const classNames = `bg-base-100 shadow-md flex-row justify-between p-2 gap-4 rounded-lg cursor-pointer overflow-hidden hover:bg-base-200 ${(props.disabled && "opacity-40") || ""}`;
 	const animationProps = {
 		initial: {
 			scale: 0,
@@ -118,25 +118,25 @@ export function FileManager(props: FileManagerPropsInterface) {
 		<>
 			<div className="flex-col gap-4 justify-between items-center p-6 text-lg font-medium sm:flex-row sm:pl-10">
 				<h2>
-					{props.fileIds.length} file{props.fileIds.length !== 1 && 's'} added (
+					{props.fileIds.length} file{props.fileIds.length !== 1 && "s"} added (
 					{getEstimatedFileSize()})
 				</h2>
 				<div className="flex-row flex-1 gap-2 sm:flex-none">
 					<DropzoneWrapper onFilesAdded={props.onFileAdded}>
 						<PrimaryButton icon={faFileCirclePlus} fake>
-							Add File
+							Agregar archivo
 						</PrimaryButton>
 					</DropzoneWrapper>
 
 					<PrimaryButton icon={faTrash} onClick={props.onAllFilesRemoved}>
-						Remove All
+						Eliminar todo
 					</PrimaryButton>
 				</div>
 			</div>
 
 			{/* Wrap the SortableFileList component with a div so that we can selectively prevent propagation of click events to it */}
 			<div
-				style={{ pointerEvents: (props.disabled && 'none') || 'initial' }}
+				style={{ pointerEvents: (props.disabled && "none") || "initial" }}
 				onClick={props.disabled ? ignoreDefault : undefined}
 				onKeyUp={props.disabled ? ignoreDefault : undefined}
 				className="overflow-hidden"

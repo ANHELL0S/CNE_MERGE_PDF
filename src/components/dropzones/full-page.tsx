@@ -4,8 +4,8 @@ import {
 	useCallback,
 	type DragEvent,
 	useEffect,
-} from 'react';
-import { ignoreDefault } from '../../common/utilities.ts';
+} from "react";
+import { ignoreDefault } from "../../common/utilities.ts";
 
 /**
  * A full screen dropzone component. Accepts a callback function that fires when a file is dropped
@@ -64,25 +64,25 @@ export function FullPageDropzone(props: {
 		// Force cast event parameter from the placeholder globalThis type to a proper React event type
 		type DragEventHandler = (event: unknown | globalThis.DragEvent) => void;
 
-		window.addEventListener('dragenter', handleDragIn as DragEventHandler);
-		window.addEventListener('dragleave', handleDragOut as DragEventHandler);
-		window.addEventListener('dragover', handleDrag as DragEventHandler);
-		window.addEventListener('drop', handleDrop as DragEventHandler);
+		window.addEventListener("dragenter", handleDragIn as DragEventHandler);
+		window.addEventListener("dragleave", handleDragOut as DragEventHandler);
+		window.addEventListener("dragover", handleDrag as DragEventHandler);
+		window.addEventListener("drop", handleDrop as DragEventHandler);
 
 		return () => {
-			window.removeEventListener('dragenter', handleDragIn as DragEventHandler);
+			window.removeEventListener("dragenter", handleDragIn as DragEventHandler);
 			window.removeEventListener(
-				'dragleave',
+				"dragleave",
 				handleDragOut as DragEventHandler,
 			);
-			window.removeEventListener('dragover', handleDrag as DragEventHandler);
-			window.removeEventListener('drop', handleDrop as DragEventHandler);
+			window.removeEventListener("dragover", handleDrag as DragEventHandler);
+			window.removeEventListener("drop", handleDrop as DragEventHandler);
 		};
 	});
 
 	return (
 		<div
-			className={`fixed inset-0 flex-col justify-center items-center p-16 bg-base-100/50 z-10 ${isDragging ? '' : 'hidden'}`}
+			className={`fixed inset-0 flex-col justify-center items-center p-16 bg-base-100/50 z-10 ${isDragging ? "" : "hidden"}`}
 		/>
 	);
 }

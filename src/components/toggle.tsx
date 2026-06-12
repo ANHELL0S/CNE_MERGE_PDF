@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import { Helmet } from 'react-helmet';
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import type { ToggleContextInterface } from '../common/types.ts';
-import { Icon } from './icon.tsx';
+import { useContext } from "react";
+import { Helmet } from "react-helmet";
+import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import type { ToggleContextInterface } from "../common/types.ts";
+import { Icon } from "./icon.tsx";
 
 type Props = {
 	className?: string;
@@ -17,7 +17,7 @@ type Props = {
  * A reskinned checkbox that toggles a context value
  */
 export function Toggle({
-	className = '',
+	className = "",
 	label,
 	context,
 	htmlAttribute,

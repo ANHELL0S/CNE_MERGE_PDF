@@ -1,25 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
 	faTriangleExclamation,
 	faCircleExclamation,
 	faSquareCheck,
-} from '@fortawesome/free-solid-svg-icons';
-import { AnimatePresence, motion } from 'framer-motion';
-import { SeverityTypes } from '../common/types.ts';
-import { getDefaultTransition, type StatusMsg } from '../common/utilities.ts';
-import { Icon } from './icon.tsx';
+} from "@fortawesome/free-solid-svg-icons";
+import { AnimatePresence, motion } from "framer-motion";
+import { SeverityTypes } from "../common/types.ts";
+import { getDefaultTransition, type StatusMsg } from "../common/utilities.ts";
+import { Icon } from "./icon.tsx";
 
 const alertTypes = {
 	[SeverityTypes.Success]: {
-		class: 'alert-success',
+		class: "alert-success",
 		icon: faSquareCheck,
 	},
 	[SeverityTypes.Warning]: {
-		class: 'alert-warning',
+		class: "alert-warning",
 		icon: faTriangleExclamation,
 	},
 	[SeverityTypes.Error]: {
-		class: 'alert-error',
+		class: "alert-error",
 		icon: faCircleExclamation,
 	},
 };
@@ -32,9 +32,9 @@ export function Alert(props: { statusMsg: StatusMsg }) {
 	const type = props.statusMsg.getSeverity;
 	const [visible, setVisible] = useState(true);
 	const animationProps = {
-		initial: 'hidden',
-		animate: 'visible',
-		exit: 'hidden',
+		initial: "hidden",
+		animate: "visible",
+		exit: "hidden",
 		variants: {
 			visible: {
 				opacity: 1,

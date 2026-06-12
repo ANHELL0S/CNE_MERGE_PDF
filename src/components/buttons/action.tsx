@@ -1,10 +1,10 @@
 import {
 	faFileArrowDown,
 	faLayerGroup,
-} from '@fortawesome/free-solid-svg-icons';
-import { FullWidthButton } from './full-width.tsx';
-import { motion } from 'framer-motion';
-import { Icon } from '../icon.tsx';
+} from "@fortawesome/free-solid-svg-icons";
+import { FullWidthButton } from "./full-width.tsx";
+import { motion } from "framer-motion";
+import { Icon } from "../icon.tsx";
 
 // A simple progress bar component for the progress action button
 function ProgressBar(props: { progress: string }) {
@@ -16,7 +16,7 @@ function ProgressBar(props: { progress: string }) {
 			width: props.progress,
 		},
 		transition: {
-			type: 'inertia',
+			type: "inertia",
 			power: 1,
 			timeConstant: 1000,
 			velocity: 100,
@@ -43,7 +43,7 @@ function MergeActionButton(props: { onClick: () => void; disabled: boolean }) {
 			onClick={props.onClick}
 		>
 			<Icon icon={faLayerGroup} />
-			Merge Files
+			Fusionar archivos
 		</FullWidthButton>
 	);
 
