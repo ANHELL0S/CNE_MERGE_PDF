@@ -1,47 +1,45 @@
-import { faCookieBite } from '@fortawesome/free-solid-svg-icons';
-import { InlineLink } from '../links/inline.tsx';
-import { Modal } from './base.tsx';
-
-const PRIVACY_POLICY_LINK = (
-	<InlineLink to="https://johng.io/privacy-policy" rel="privacy-policy">
-		full privacy policy
-	</InlineLink>
-);
+import { faCookieBite } from "@fortawesome/free-solid-svg-icons";
+import { Modal } from "./base.tsx";
 
 /**
- * A modal that displays the privacy policy for the site
+ * A modal that displays the privacy policy for the site related to Cne Bolivar
  */
 export function PrivacyModal(props: { id: string }) {
 	return (
 		<Modal
 			id={props.id}
-			title="Privacy Policy"
+			title="Políticas de Privacidad"
 			buttonIcon={faCookieBite}
-			buttonLabel="Yum"
+			buttonLabel="Aceptar"
 		>
+			<br />
 			<p>
-				All processing is performed locally on your own device — no PDF files
-				are ever uploaded to our servers. This also happens to make the merging
-				process faster!
+				Todos los procesos se realizan localmente en tu dispositivo — ningún
+				archivo PDF se sube a nuestros servidores. Esto también hace que el
+				proceso de fusión sea más rápido.
 			</p>
 			<br />
 			<p>
-				If you change any options, local storage will be used to store your
-				settings between page visits. You can wipe the saved data for this site
-				in your browser's settings.
+				Si cambias alguna opción, se usará el almacenamiento local para guardar
+				tu configuración entre visitas. Puedes borrar los datos guardados de
+				este sitio en la configuración de tu navegador.
 			</p>
 			<br />
 			<p>
-				This site may collect anonymized usage analytics. This data is used to
-				help me improve the site and does include any personally identifiable
-				information or any details about PDF files you add. This data is not
-				used for tracking or marketing.
+				Este sitio puede recopilar análisis de uso anónimos. Estos datos se usan
+				para ayudarme a mejorar el sitio y NO incluyen información personal
+				identificable ni detalles sobre los archivos PDF que añadas. Estos datos
+				no se usan para rastreo ni marketing.
 			</p>
 			<br />
 			<p>
-				This is a summary of the privacy policy for this site. See the{' '}
-				{PRIVACY_POLICY_LINK} for more details. By using this site to agree to
-				these terms.
+				<strong>Políticas adicionales para Cne Bolivar:</strong>
+				<br />
+				Este sitio cumple con las normativas de protección de datos aplicables
+				en el ámbito bolivariano. La información procesada no será compartida
+				con terceros sin tu consentimiento explícito, a menos que lo exija la
+				ley. Para consultas oficiales, contacta a través de los canales
+				autorizados del CNE o entidades competentes.
 			</p>
 		</Modal>
 	);

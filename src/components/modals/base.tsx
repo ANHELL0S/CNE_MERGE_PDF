@@ -1,7 +1,7 @@
-import type { ReactNode } from 'react';
-import type { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { LinkWrapper } from '../links/wrapper.tsx';
-import { PrimaryButton } from '../buttons/primary.tsx';
+import type { ReactNode } from "react";
+import type { IconDefinition } from "@fortawesome/free-solid-svg-icons";
+import { LinkWrapper } from "../links/wrapper.tsx";
+import { PrimaryButton } from "../buttons/primary.tsx";
 
 /**
  * A generic modal component

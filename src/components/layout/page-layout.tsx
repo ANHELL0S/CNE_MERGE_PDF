@@ -1,14 +1,14 @@
-import { type ReactNode, useEffect, useMemo, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { MotionConfig } from 'framer-motion';
-import type { MetadataInterface } from '../../common/types.ts';
+import { type ReactNode, useEffect, useMemo, useState } from "react";
+import { Helmet } from "react-helmet";
+import { MotionConfig } from "framer-motion";
+import type { MetadataInterface } from "../../common/types.ts";
 import {
 	DarkThemeContext,
 	AllowMotionContext,
 	useIsMount,
 	mediaFeatureMatches,
-} from '../../common/utilities.ts';
-import { storageGet, storageSetIf } from '../../common/storage-manager.ts';
+} from "../../common/utilities.ts";
+import { storageGet, storageSetIf } from "../../common/storage-manager.ts";
 
 type Props = {
 	className?: string;
@@ -19,18 +19,17 @@ type Props = {
 /**
  * Layout that provides basic styles and metadata tags for the whole page
  */
-export function PageLayout({ className = '', metadata, children }: Props) {
-	const lsKeyForTheme = 'is-dark-theme';
-	const lsKeyForMotion = 'is-motion-allowed';
+export function PageLayout({ className = "", metadata, children }: Props) {
+	const lsKeyForTheme = "is-dark-theme";
+	const lsKeyForMotion = "is-motion-allowed";
 	const ogImageUrl = `${metadata.siteUrl}${metadata.ogImageUrl}`;
 
 	// Whether the component is currently being mounted or not
 	// We can use this to ignore initial state changes of the component
 	const isMount = useIsMount();
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean>(getIsDarkMode());
-	const [isMotionAllowed, setIsMotionAllowed] = useState<boolean>(
-		getIsMotionAllowed(),
-	);
+	const [isMotionAllowed, setIsMotionAllowed] =
+		useState<boolean>(getIsMotionAllowed());
 
 	// Save the user's preferences to local storage when its state changes
 	useEffect(() => {
@@ -46,20 +45,20 @@ export function PageLayout({ className = '', metadata, children }: Props) {
 	function getIsDarkMode(): boolean {
 		return storageGet(
 			lsKeyForTheme,
-			mediaFeatureMatches('prefers-color-scheme', 'dark', true),
+			mediaFeatureMatches("prefers-color-scheme", "dark", true),
 		);
 	}
 
 	function getIsMotionAllowed(): boolean {
 		return storageGet(
 			lsKeyForMotion,
-			!mediaFeatureMatches('prefers-reduced-motion', 'reduce', false),
+			!mediaFeatureMatches("prefers-reduced-motion", "reduce", false),
 		);
 	}
 
 	// Get the primary theme color from DaisyUI config
 	function getPrimaryThemeColor(): string {
-		return metadata[isDarkTheme ? 'darkTheme' : 'lightTheme'].primary;
+		return metadata[isDarkTheme ? "darkTheme" : "lightTheme"].primary;
 	}
 
 	// Define toggle functions and memoize before passing to the relevant context provider
@@ -87,7 +86,7 @@ export function PageLayout({ className = '', metadata, children }: Props) {
 		<DarkThemeContext.Provider value={providerValuesForTheme}>
 			<AllowMotionContext.Provider value={providerValuesForMotion}>
 				{/* Page head */}
-				<Helmet htmlAttributes={{ lang: 'en-US' }}>
+				<Helmet htmlAttributes={{ lang: "es-ES" }}>
 					<title>{metadata.title}</title>
 					<meta name="author" content={metadata.author} />
 					<meta name="description" content={metadata.description} />
@@ -152,7 +151,7 @@ export function PageLayout({ className = '', metadata, children }: Props) {
 				{/* Page body */}
 				<MotionConfig reducedMotion="user">
 					<div
-						className={`flex-col gap-8 justify-between items-center mx-auto min-h-screen text-base bg-base-200 text-base-content selection:bg-primary selection:text-primary-content ${className}`}
+						className={`flex-col gap-8 justify-between items-center mx-auto min-h-screen text-base bg-base-100 text-base-content selection:bg-base-100 selection:text-primary-content ${className}`}
 					>
 						{children}
 					</div>

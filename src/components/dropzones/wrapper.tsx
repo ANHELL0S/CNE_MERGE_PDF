@@ -1,5 +1,5 @@
-import type { ChangeEvent, ReactNode } from 'react';
-import { ignoreDefault } from '../../common/utilities.ts';
+import type { ChangeEvent, ReactNode } from "react";
+import { ignoreDefault } from "../../common/utilities.ts";
 
 type Props = {
 	className?: string;
@@ -13,7 +13,7 @@ type Props = {
  * Accepts a callback function that fires when a file is dropped.
  */
 export function DropzoneWrapper({
-	className = '',
+	className = "",
 	children,
 	onFilesAdded,
 }: Props) {

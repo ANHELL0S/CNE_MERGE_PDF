@@ -4,13 +4,13 @@ import {
 	faSun,
 	faWandMagic,
 	faWandMagicSparkles,
-} from '@fortawesome/free-solid-svg-icons';
-import { Modal } from './base.tsx';
-import { Toggle } from '../toggle.tsx';
+} from "@fortawesome/free-solid-svg-icons";
+import { Modal } from "./base.tsx";
+import { Toggle } from "../toggle.tsx";
 import {
 	AllowMotionContext,
 	DarkThemeContext,
-} from '../../common/utilities.ts';
+} from "../../common/utilities.ts";
 
 /**
  * A toggle component used to change the page theme
@@ -19,11 +19,11 @@ function ThemeToggle() {
 	return (
 		<Toggle
 			className="pl-0"
-			label="dark theme"
+			label="tema oscuro"
 			context={DarkThemeContext}
 			htmlAttribute="data-theme"
-			disabled={['light', faSun]}
-			enabled={['dark', faMoon]}
+			disabled={["light", faSun]}
+			enabled={["dark", faMoon]}
 		/>
 	);
 }
@@ -35,32 +35,37 @@ function MotionToggle() {
 	return (
 		<Toggle
 			className="pl-0"
-			label="animations"
+			label="animaciones"
 			context={AllowMotionContext}
 			htmlAttribute="data-motion"
-			disabled={['reduce', faWandMagic]}
-			enabled={['allow', faWandMagicSparkles]}
+			disabled={["reduce", faWandMagic]}
+			enabled={["allow", faWandMagicSparkles]}
 		/>
 	);
 }
 
 /**
- * A modal that allows setting options for the site
+ * A modal that allows setting options for the site – Cne Bolivar
  */
 export function OptionsModal(props: { id: string }) {
 	return (
 		<Modal
 			id={props.id}
-			title="Options"
+			title="Opciones"
 			buttonIcon={faEye}
-			buttonLabel="Looks good"
+			buttonLabel="Aplicar"
 		>
-			<p>You can change various options for the site here.</p>
+			<br />
+			<p>Puedes cambiar varias opciones del sitio aquí.</p>
 			<br />
 			<div className="flex-col w-fit">
 				<MotionToggle />
 				<ThemeToggle />
 			</div>
+			<br />
+			<p className="text-sm text-gray-500">
+				Nota: Las opciones se guardan automáticamente en tu navegador.
+			</p>
 		</Modal>
 	);
 }

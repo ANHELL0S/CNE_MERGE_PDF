@@ -1,9 +1,9 @@
 // Local deps
-import config from '../../gatsby-config.ts';
-import { loadMetadata } from '../common/utilities.ts';
-import { Footer } from '../components/layout/footer.tsx';
-import { Header } from '../components/layout/header.tsx';
-import { PageLayout } from '../components/layout/page-layout.tsx';
+import config from "../../gatsby-config.ts";
+import { loadMetadata } from "../common/utilities.ts";
+import { Footer } from "../components/layout/footer.tsx";
+import { Header } from "../components/layout/header.tsx";
+import { PageLayout } from "../components/layout/page-layout.tsx";
 
 export default function IndexPage() {
 	const metadata = loadMetadata(config);

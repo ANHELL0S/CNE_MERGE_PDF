@@ -1,9 +1,9 @@
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { InlineLink } from '../links/inline.tsx';
-import { Modal } from './base.tsx';
+import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
+import { InlineLink } from "../links/inline.tsx";
+import { Modal } from "./base.tsx";
 
-const FUNDING_LINK = (
-	<InlineLink to="https://johng.io/funding">supporting me</InlineLink>
+const SUPPORT_LINK = (
+	<InlineLink to="https://cne.gob.ve">apoyar iniciativas cívicas</InlineLink>
 );
 const REACT_LINK = <InlineLink to="https://reactjs.org/">React</InlineLink>;
 const GATSBY_LINK = (
@@ -15,12 +15,12 @@ const TAILWIND_CSS_LINK = (
 const GITHUB_PAGES_LINK = (
 	<InlineLink to="https://pages.github.com/">GitHub Pages</InlineLink>
 );
-const PANCAKE_ICON_LINK = (
-	<InlineLink to="https://thenounproject.com/icon/pancakes-1974111/">
-		"Pancakes" icon
+const BOLIVAR_ICON_LINK = (
+	<InlineLink to="https://thenounproject.com/icon/bolivar-1974111/">
+		Ícono "Bolívar"
 	</InlineLink>
 );
-const PANCAKE_ICON_LICENSE_LINK = (
+const BOLIVAR_ICON_LICENSE_LINK = (
 	<InlineLink to="https://creativecommons.org/licenses/by/3.0/">
 		CC BY
 	</InlineLink>
@@ -30,7 +30,7 @@ const FONT_AWESOME_LINK = (
 );
 
 /**
- * A modal that displays info about the site
+ * A modal that displays info about the site – Cne Bolivar
  */
 export function AboutModal(props: {
 	id: string;
@@ -46,24 +46,21 @@ export function AboutModal(props: {
 	return (
 		<Modal
 			id={props.id}
-			title="About"
+			title="Acerca de"
 			buttonIcon={faThumbsUp}
-			buttonLabel="Cool beans"
+			buttonLabel="Entendido"
 		>
+			<br />
+			<p>Hecho ❤️ por {authorLink}</p>
+			<br />
 			<p>
-				Handcrafted with ❤️ by {authorLink}. If you find this tool useful, please
-				consider {FUNDING_LINK}.
+				Funciona gracias a {REACT_LINK} + {GATSBY_LINK} + {TAILWIND_CSS_LINK}.
 			</p>
 			<br />
 			<p>
-				Powered by {REACT_LINK} + {GATSBY_LINK} + {TAILWIND_CSS_LINK}. Hosted by{' '}
-				{GITHUB_PAGES_LINK}.
-			</p>
-			<br />
-			<p>
-				{PANCAKE_ICON_LINK} by Kokota at NounProject.com is licensed under{' '}
-				{PANCAKE_ICON_LICENSE_LINK} (with additional optimization and recoloring
-				by me). Other assorted icons are from {FONT_AWESOME_LINK} by Dave Gandy.
+				<strong>Nota institucional:</strong> Este sitio no es el sitio oficial
+				del CNE - BOLIVAR. Para trámites oficiales, consulte los canales
+				autorizados del Consejo Nacional Electoral Delegación Bolívar.
 			</p>
 		</Modal>
 	);

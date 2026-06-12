@@ -1,24 +1,24 @@
 // External deps
-import { useState, useCallback } from 'react';
+import { useState, useCallback } from "react";
 
 // Local deps
-import config from '../../gatsby-config.ts';
-import type { PdfFileMapInterface } from '../common/types.ts';
+import config from "../../gatsby-config.ts";
+import type { PdfFileMapInterface } from "../common/types.ts";
 import {
 	loadMetadata,
 	PdfManager,
 	type StatusMsg,
-} from '../common/utilities.ts';
-import { LargeDropzone } from '../components/dropzones/large.tsx';
-import { FullPageDropzone } from '../components/dropzones/full-page.tsx';
-import { Alert } from '../components/alert.tsx';
-import { ActionButton } from '../components/buttons/action.tsx';
-import { Footer } from '../components/layout/footer.tsx';
-import { Header } from '../components/layout/header.tsx';
-import { FileManager } from '../components/file-manager.tsx';
-import { Section } from '../components/layout/section.tsx';
-import { Main } from '../components/layout/main.tsx';
-import { PageLayout } from '../components/layout/page-layout.tsx';
+} from "../common/utilities.ts";
+import { LargeDropzone } from "../components/dropzones/large.tsx";
+import { FullPageDropzone } from "../components/dropzones/full-page.tsx";
+import { Alert } from "../components/alert.tsx";
+import { ActionButton } from "../components/buttons/action.tsx";
+import { Footer } from "../components/layout/footer.tsx";
+import { Header } from "../components/layout/header.tsx";
+import { FileManager } from "../components/file-manager.tsx";
+import { Section } from "../components/layout/section.tsx";
+import { Main } from "../components/layout/main.tsx";
+import { PageLayout } from "../components/layout/page-layout.tsx";
 
 // Constants
 
@@ -34,7 +34,7 @@ export default function IndexPage() {
 	const [fileIds, setFileIds] = useState<string[]>([]);
 	const [files, setFiles] = useState<PdfFileMapInterface>({});
 	const [statusMsgs, setStatusMsgs] = useState<StatusMsg[]>([]);
-	const [mergedPdfUrl, setMergedPdfUrl] = useState<string>('');
+	const [mergedPdfUrl, setMergedPdfUrl] = useState<string>("");
 	const [currentProgress, setCurrentProgress] = useState<number>(0);
 
 	const pdfManager = new PdfManager(METADATA.shortTitle, METADATA.siteUrl);
@@ -53,7 +53,7 @@ export default function IndexPage() {
 
 		setFileIds(newFileIds);
 		setCurrentProgress(0);
-		setMergedPdfUrl('');
+		setMergedPdfUrl("");
 	}
 
 	// Handler for file upload events
@@ -112,8 +112,8 @@ export default function IndexPage() {
 		);
 
 		// Reset progress if there were any critical errors
-		if (downloadUrl === '') {
-			setMergedPdfUrl('');
+		if (downloadUrl === "") {
+			setMergedPdfUrl("");
 		}
 
 		setMergedPdfUrl(downloadUrl);
@@ -134,10 +134,7 @@ export default function IndexPage() {
 					))}
 				</Section>
 
-				<Section
-					visible={fileIds.length === 0}
-					className="flex-1 rounded-none border bg-base-100 border-base-300 sm:rounded-box"
-				>
+				<Section visible={fileIds.length === 0} className="flex-1 rounded-none">
 					<LargeDropzone onFilesAdded={handleAddFiles} />
 				</Section>
 

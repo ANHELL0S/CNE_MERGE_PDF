@@ -15,7 +15,7 @@ const config = {
 		authorUsername: "ANHELL0S",
 		shortDescription: "Fusiona documentos PDF del CNE de forma segura y local",
 		description:
-			"Herramienta oficial para combinar múltiples documentos PDF relacionados con procesos electorales del Consejo Nacional Electoral. Sin límites de tamaño, sin subidas a servidores, 100% privado y seguro.",
+			"Herramienta para combinar múltiples documentos PDF relacionados con procesos electorales del CNE - BOLIVAR. Sin límites de tamaño, sin subidas a servidores, 100% privado y seguro.",
 		ogImageUrl: "images/og-image.png",
 		ogImageAltText:
 			"CNE MERGE PDF - Herramienta de fusión de documentos electorales",
