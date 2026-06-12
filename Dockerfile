@@ -1,22 +1,19 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM oven/bun:latest AS builder
 
 WORKDIR /app
 
-# Habilitar yarn
-RUN corepack enable && corepack prepare yarn@stable --activate
-
 # Copiar dependencias
-COPY package.json yarn.lock ./
+COPY package.json bun.lockb ./
 
-# Instalar dependencias
-RUN yarn install --frozen-lockfile
+# Instalar dependencias con Bun
+RUN bun install --frozen-lockfile
 
 # Copiar código fuente
 COPY . .
 
 # Construir la aplicación
-RUN yarn build
+RUN bun run build
 
 # Production stage
 FROM nginx:alpine
