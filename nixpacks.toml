@@ -1,0 +1,14 @@
+[phases.setup]
+nixPkgs = ["bun"]
+
+[phases.install]
+cmds = ["bun install"]
+
+[phases.build]
+cmds = ["bun run build"]
+
+[phases.start]
+cmds = ["bun run serve"]
+
+[[ports]]
+port = "3010"
