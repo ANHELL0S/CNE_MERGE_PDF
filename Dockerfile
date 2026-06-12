@@ -1,28 +1,28 @@
 # --- Etapa 1: Builder ---
-# Usamos una imagen de Node para construir la aplicación
 FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copiamos los archivos de dependencias y las instalamos
-# Usamos bun porque el proyecto original tiene bun.lock [citation:1]
-COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+# Instalar Bun globalmente
+RUN npm install -g bun
 
-# Copiamos todo el código fuente y lo construimos
+# Copiar archivos de dependencias
+COPY package.json bun.lock ./
+RUN bun install
+
+# Copiar todo el código y construir
 COPY . .
-RUN bun build
+RUN bun run build
 
 # --- Etapa 2: Servidor ---
-# Usamos una imagen ligera de Nginx para servir la aplicación
 FROM nginx:alpine
 
-# Este es el punto crucial. ¡Copiamos los archivos desde la carpeta 'public' del builder!
+# Copiar los archivos construidos
 COPY --from=builder /app/public /usr/share/nginx/html
 
-# Configuramos Nginx para manejar correctamente las rutas de una SPA
+# Configurar Nginx para escuchar en el puerto 3010
 RUN echo 'server { \
-    listen 80; \
+    listen 3010; \
     server_name localhost; \
     root /usr/share/nginx/html; \
     index index.html; \
@@ -31,5 +31,5 @@ RUN echo 'server { \
     } \
 }' > /etc/nginx/conf.d/default.conf
 
-# Puerto que Nginx usará internamente
-EXPOSE 80
+# Exponer el puerto 3010
+EXPOSE 3010

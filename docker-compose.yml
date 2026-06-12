@@ -1,7 +1,9 @@
+version: "3.8"
+
 services:
-  cne_mergist:
+  cne-merge-pdf:
     build: .
-    container_name: cne_mergist
+    container_name: cne-merge-pdf-app
     ports:
-      - "8080:80"
+      - "3010:3010"
     restart: unless-stopped
