@@ -38,7 +38,7 @@ function ProgressBar(props: { progress: string }) {
 function MergeActionButton(props: { onClick: () => void; disabled: boolean }) {
 	const mergeButton = (
 		<FullWidthButton
-			className="btn-primary"
+			className="btn-primary text-sm rounded-full"
 			disabled={props.disabled}
 			onClick={props.onClick}
 		>

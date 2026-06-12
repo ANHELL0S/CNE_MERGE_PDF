@@ -20,7 +20,7 @@ function SortableItem(props: {
 	onRemove: (fileId: string) => void;
 	disabled: boolean;
 }) {
-	const classNames = `bg-base-100 shadow-md flex-row justify-between p-2 gap-4 rounded-lg cursor-pointer overflow-hidden hover:bg-base-200 ${(props.disabled && "opacity-40") || ""}`;
+	const classNames = `bg-base-300 flex-row justify-between p-2 gap-4 rounded-2xl cursor-pointer overflow-hidden hover:bg-base-200 ${(props.disabled && "opacity-40") || ""}`;
 	const animationProps = {
 		initial: {
 			scale: 0,
@@ -76,7 +76,7 @@ function SortableFileList(props: SortableFileListPropsInterface) {
 			axis="y"
 			values={props.fileIds}
 			onReorder={props.onReorder}
-			className="overflow-hidden flex-col gap-5 px-6 py-7 shadow-inner bg-base-300"
+			className="overflow-hidden flex-col gap-5 py-4 bg-base-100"
 		>
 			<AnimatePresence>
 				{props.fileIds.map((fileId) => (
@@ -116,11 +116,12 @@ export function FileManager(props: FileManagerPropsInterface) {
 
 	return (
 		<>
-			<div className="flex-col gap-4 justify-between items-center p-6 text-lg font-medium sm:flex-row sm:pl-10">
-				<h2>
-					{props.fileIds.length} file{props.fileIds.length !== 1 && "s"} added (
+			<div className="flex-col gap-4 justify-between items-center py-6 text-lg font-medium sm:flex-row">
+				<h2 className="text-sm font-semibold">
+					{props.fileIds.length} archivo{props.fileIds.length !== 1 && "s"} (
 					{getEstimatedFileSize()})
 				</h2>
+
 				<div className="flex-row flex-1 gap-2 sm:flex-none">
 					<DropzoneWrapper onFilesAdded={props.onFileAdded}>
 						<PrimaryButton icon={faFileCirclePlus} fake>

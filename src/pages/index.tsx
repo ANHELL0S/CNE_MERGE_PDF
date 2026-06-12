@@ -138,10 +138,7 @@ export default function IndexPage() {
 					<LargeDropzone onFilesAdded={handleAddFiles} />
 				</Section>
 
-				<Section
-					visible={fileIds.length > 0}
-					className="rounded-none border bg-base-100 border-base-300 sm:rounded-box"
-				>
+				<Section visible={fileIds.length > 0} className="rounded-none p-0 m-0">
 					<FileManager
 						fileIds={fileIds}
 						files={files}
